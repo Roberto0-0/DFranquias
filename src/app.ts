@@ -1,5 +1,4 @@
 import express from "express";
-import bodyParser from "body-parser";
 import { AppRoutes } from "./routes"
 
 export class App {
@@ -13,8 +12,7 @@ export class App {
     }
 
     middlewares() {
-        this.app.use(bodyParser.urlencoded({ extended: false }))
-        this.app.use(bodyParser.json())
+        this.app.use(express.json())
     }
 
     routes() {

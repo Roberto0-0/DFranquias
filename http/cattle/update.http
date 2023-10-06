@@ -1,4 +1,4 @@
-POST http://localhost:3333/cattle/register
+PUT http://localhost:3333/cattle/update/1
 Content-Type: application/json
 
 {
@@ -7,4 +7,5 @@ Content-Type: application/json
     "amount_food": 98,
     "weight": 270,
     "birth": "2023-10-06T17:56:23.835Z"
+
 }

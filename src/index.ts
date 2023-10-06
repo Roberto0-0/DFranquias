@@ -1,3 +1,3 @@
 import { App } from "./app";
 
-new App().app.listen(process.env.PORT || 3333)
+new App().app.listen(process.env.PORT || 3333, () => console.log("Connected."))

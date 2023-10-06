@@ -9,7 +9,7 @@ type CattleCreateProps = {
 }
 
 export class CattleCreate {
-    async execute({ ...props }: CattleCreateProps) {
+    async execute({ ...props }: CattleCreateProps): Promise<void | Error> {
         const cattle = await CattleRepository.findUnique({ where: { code: props.code } })
 
         if(cattle) { return new Error("Code already in use.") }

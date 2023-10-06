@@ -15,5 +15,8 @@ export class AppRoutes {
 
     cattle() {
         this.router.post("/cattle/register", new CattleController().create)
+        this.router.get("/cattle/:id", new CattleController().getById)
+        this.router.put("/cattle/update/:id", new CattleController().update)
+        this.router.delete("/cattle/delete/:id", new CattleController().delete)
     }
 }
