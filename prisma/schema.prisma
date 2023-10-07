@@ -17,4 +17,5 @@ model Cattle {
   amount_food Float
   weight      Float
   birth       DateTime
+  alive       Boolean @default(true)
 }

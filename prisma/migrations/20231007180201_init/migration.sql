@@ -6,6 +6,7 @@ CREATE TABLE `Cattle` (
     `amount_food` DOUBLE NOT NULL,
     `weight` DOUBLE NOT NULL,
     `birth` DATETIME(3) NOT NULL,
+    `alive` BOOLEAN NOT NULL DEFAULT false,
 
     UNIQUE INDEX `Cattle_code_key`(`code`),
     PRIMARY KEY (`id`)
