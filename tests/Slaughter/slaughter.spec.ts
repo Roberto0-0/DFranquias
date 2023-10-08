@@ -3,9 +3,7 @@ import { Slaughter } from "../../src/services/Slaughter/slaughter";
 
 test("slaughter of cattle", async () => {
     const slaughterService = new Slaughter()
-    const slaughterResponse = await slaughterService.execute("TD20")
+    const slaughterResponse = await slaughterService.execute("TD18")
 
-    console.log(slaughterResponse)
-
-    expect(slaughterResponse).toBeTruthy()
+    expect(slaughterResponse).toBeUndefined()
 })

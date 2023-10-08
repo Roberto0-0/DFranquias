@@ -15,7 +15,5 @@ export class App {
         this.app.use(express.json())
     }
 
-    routes() {
-        this.app.use(new AppRoutes().router)
-    }
+    routes() { this.app.use(new AppRoutes().router) }
 }

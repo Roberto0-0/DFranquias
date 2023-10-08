@@ -1,6 +1,6 @@
+import { CattleAgeCheck } from "../../config/cattleAgeCheck";
 import { SlaughterCheckSchema } from "../../schemas/SlaughterSchema";
 import { CattleGetById } from "../Cattle/getById";
-import dayjs from "dayjs";
 
 var errorStorage: string[] = []
 
@@ -11,9 +11,7 @@ export class SlaughterCheck {
 
         if(cattleGetByIdResponse instanceof Error) { return new Error(cattleGetByIdResponse.message) }
 
-        const currentDate = dayjs(new Date()).format('YYYY')
-        const cattleBirthDate = dayjs(cattleGetByIdResponse.birth).format("YYYY")
-        const cattleAge = Number(currentDate) - Number(cattleBirthDate)
+        const cattleAge = CattleAgeCheck(cattleGetByIdResponse.birth)
 
         const amountMilkPerWeek = cattleGetByIdResponse.amount_milk
         const amountFoodPerDay = cattleGetByIdResponse.amount_food / 7
@@ -21,6 +19,7 @@ export class SlaughterCheck {
         const cattleArroba = cattleGetByIdResponse.weight / 30
 
         const slaughterCheckSchemaResponse = SlaughterCheckSchema.safeParse({
+            alive: cattleGetByIdResponse.alive,
             age: cattleAge,
             amount_milk: amountMilkPerWeek,
             amount_food: amountFoodPerDay,

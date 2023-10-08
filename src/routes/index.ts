@@ -1,5 +1,6 @@
 import express, { Request, Response, Router } from "express";
 import { CattleController } from "../controllers/cattleController";
+import { HomeController } from "../controllers/homeController";
 
 export class AppRoutes {
     router: express.IRouter
@@ -11,7 +12,7 @@ export class AppRoutes {
         this.cattle()
     }
 
-    home() { this.router.get("/", (req: Request, res: Response) => res.send("Hello World") ) }
+    home() { this.router.get("/", new HomeController().handle) }
 
     cattle() {
         this.router.post("/cattle/register", new CattleController().create)

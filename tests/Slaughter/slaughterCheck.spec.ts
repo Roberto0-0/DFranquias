@@ -3,7 +3,7 @@ import { SlaughterCheck } from "../../src/services/Slaughter/slaughterCheck";
 
 test("check whether cattle to be slaughtered", async () => {
     const slaughterCheckSerService = new SlaughterCheck()
-    const slaughterCheckSerResponse = await slaughterCheckSerService.execute(1)
+    const slaughterCheckSerResponse = await slaughterCheckSerService.execute(4)
 
-    expect(slaughterCheckSerResponse).toBeTruthy()
+    expect(slaughterCheckSerResponse).toBeUndefined()
 })

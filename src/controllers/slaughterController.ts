@@ -11,12 +11,12 @@ export class slaughterController {
 
             if(slaughterResponse instanceof Error) { return res.status(400).json({
                 statusCode: 400,
-                succes: false,
+                success: false,
                 message: slaughterResponse.message
             }) }
             if(!slaughterResponse?.success) { return res.status(400).json({
                 statusCode: 400,
-                succes: false,
+                success: false,
                 message: slaughterResponse?.message
             }) }
 

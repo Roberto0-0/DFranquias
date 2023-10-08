@@ -17,7 +17,8 @@ export class CattleUpdate {
         ])
 
         if(!cattle) { return new Error("Cattle not found.") }
-        if(cattleCodeExsist) { return new Error("Code already in use.") }
+        if(!cattleCodeExsist) { return new Error("Code not found.") }
+        if(cattleCodeExsist.id !== cattle.id) { return new Error("Code already in use.") }
  
         const { id: _, ...data } = props
 
