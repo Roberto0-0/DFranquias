@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/dayjs.min.js"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/cattle/consult/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColors/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/assets/logo.png" alt="">
+                <h2>DFranquias</h2>
+            </a>
+            <div class="nav-area">
+                <div class="change-color" id="moon">
+                    <i style="display: none;" class="ph ph-moon"></i>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li>
+                            <i class="ph-fill ph-file-plus"></i>
+                          <a href="">register</a>
+                        </li>
+                      <li>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/">back</a>
+                      </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="menu"><i class="ph-bold ph-list"></i></div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <% if(data) { %>
+                <div class="consult-box">
+                    <form action="/cattle/search" method="POST">
+                        <div class="input">
+                            <select name="code" id="code" class="select" required>
+                                <option selected disabled><%= data.code %></option>
+                                <% if(codes.length > 0) { %>
+                                    <% for(let index=0; index < codes.length;index++) { %>
+                                        <option value="<%= codes[index] %>"><%= codes[index] %></option>
+                                    <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+                        <button>consult</button>
+                    </form>
+                </div>
+                <div class="result-box">
+                    <div class="header-result">
+                        <img src="/assets/cattle.png" alt="">
+                        <span class="cattle-code"><%= data.code %></span>
+                    </div>
+                    <div class="content-result">
+                        <ul>
+                            <li>
+                                <p>Milk</p>
+                                <div><span><%= data.amount_milk %></span>L</div>
+                            </li>
+                            <li>
+                                <p>Food</p>
+                                <div><span><%= data.amount_food %></span>Kg</div>
+                            </li>
+                            <li>
+                                <p>Weight</p>
+                                <div><span><%= data.weight %></span>Kg</div>
+                            </li>
+                            <li>
+                                <p>Years old</p>
+                                <div><span class="date"><%= data.birth %></span></div>
+                            </li>
+                            <li>
+                                <p>Date of birth</p>
+                                <div><span class="birth-date"><%= data.birth %></span></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="cattle-control">
+                        <a href="../edit/index.html">Edit</a>
+                        <a href="">Delete</a>
+                        <a href="" class="slaughter-button">slaughter</a>
+                    </div>
+                </div>
+            <% } else { %>
+                <div class="consult-box">
+                    <form action="/cattle/search" method="POST">
+                        <div class="input">
+                            <select name="code" id="code" class="select" required>
+                                <option selected disabled>select</option>
+                                <% if(codes.length > 0) { %>
+                                    <% for(let index=0; index < codes.length;index++) { %>
+                                        <option value="<%= codes[index] %>"><%= codes[index] %></option>
+                                    <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+                        <button>consult</button>
+                    </form>
+                </div>
+                <div class="no-result-box"></div>
+            <% } %>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>
+                &copy; 2023 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+            </p>
+        </div>
+    </footer>
+    <script src="/js/menu/main.js"></script>
+    <script src="/js/cattleAgeCheckSingle/main.js"></script>
+</body>
+</html>

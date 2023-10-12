@@ -10,7 +10,7 @@ export class Slaughter {
         if(cattleGetByCodeResponse instanceof Error) { return new Error(cattleGetByCodeResponse.message) }
 
         const slaughterCheckService = new SlaughterCheck()
-        const slaughterCheckResponse = await slaughterCheckService.execute(cattleGetByCodeResponse.id)
+        const slaughterCheckResponse = await slaughterCheckService.execute(cattleGetByCodeResponse.code)
 
         if(slaughterCheckResponse instanceof Error) { return new Error(slaughterCheckResponse.message) }
         if(slaughterCheckResponse?.success !== undefined && slaughterCheckResponse?.success === false) { 

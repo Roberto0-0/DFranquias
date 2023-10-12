@@ -1,9 +1,11 @@
 import { Request, Response } from "express";
 import { CattleCreateSchema, CattleUpdateSchema } from "../schemas/CattleSchema";
 import { CattleCreate } from "../services/Cattle/create";
-import { CattleGetById } from "../services/Cattle/getById";
+// import { CattleGetById } from "../services/Cattle/getById";
 import { CattleUpdate } from "../services/Cattle/update";
 import { CattleDelete } from "../services/Cattle/delete";
+import { CattleGetAllCode } from "../services/Cattle/gatAllCode";
+import { CattleGetByCode } from "../services/Cattle/getByCode";
 
 var errorStorage: string[] = []
 
@@ -49,25 +51,77 @@ export class CattleController {
         }
     }
 
-    async getById(req: Request, res: Response) {
-        const { id } = req.params
+    // async getById(req: Request, res: Response) {
+    //     const { id } = req.params
 
+    //     try {
+    //         const cattleGetByIdService = new CattleGetById()
+    //         const cattleGetByIdResponse = await cattleGetByIdService.execute(Number(id))
+
+    //         if(cattleGetByIdResponse instanceof Error) { return res.status(400).json({
+    //             statusCode: 400,
+    //             success: false,
+    //             message: cattleGetByIdResponse.message
+    //         }) }
+
+    //         return res.status(200).json({
+    //             statusCode: 200,
+    //             success: true,
+    //             data: cattleGetByIdResponse
+    //         })
+
+    //     } catch (error) {
+    //         console.error(error)
+    //         return res.status(500).json({ message: "Internal server error." })
+    //     }
+    // }
+
+    async getbyCodeIndex(req: Request, res: Response) {
         try {
-            const cattleGetByIdService = new CattleGetById()
-            const cattleGetByIdResponse = await cattleGetByIdService.execute(Number(id))
+            const cattleGetAllCodeService = new CattleGetAllCode()
+            const cattleGetAllCodeResponse = await cattleGetAllCodeService.execute()
 
-            if(cattleGetByIdResponse instanceof Error) { return res.status(400).json({
+            if(cattleGetAllCodeResponse instanceof Error) { return res.status(400).json({
                 statusCode: 400,
                 success: false,
-                message: cattleGetByIdResponse.message
+                messsage: cattleGetAllCodeResponse.message
             }) }
 
-            return res.status(200).json({
-                statusCode: 200,
-                success: true,
-                data: cattleGetByIdResponse
+            return res.render("cattle/consult/index.ejs", {
+                codes: cattleGetAllCodeResponse,
+                data: undefined
             })
+        } catch (error) {
+            console.error(error)
+            return res.status(500).json({ message: "Internal server error." })
+        }
+    }
 
+    async getbyCode(req: Request, res: Response) {
+        const { code } = req.body
+
+        try {
+            const cattleGetByCodeService = new CattleGetByCode()
+            const cattleGetByCodeResponse = await cattleGetByCodeService.execute(code)
+            const cattleGetAllCodeService = new CattleGetAllCode()
+            const cattleGetAllCodeResponse = await cattleGetAllCodeService.execute()
+
+            if(cattleGetByCodeResponse instanceof Error) { return res.status(400).json({
+                statusCode: 400,
+                success: false,
+                message: cattleGetByCodeResponse.message
+            }) }
+
+            if(cattleGetAllCodeResponse instanceof Error) { return res.status(400).json({
+                statusCode: 400,
+                success: false,
+                messsage: cattleGetAllCodeResponse.message
+            }) }
+
+            return res.render("cattle/consult/index.ejs", {
+                data: cattleGetByCodeResponse,
+                codes: cattleGetAllCodeResponse
+            })
         } catch (error) {
             console.error(error)
             return res.status(500).json({ message: "Internal server error." })

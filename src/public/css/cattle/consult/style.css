@@ -1,0 +1,218 @@
+main {
+    flex: 1;
+
+    margin: 20px auto;
+
+    width: 100%;
+    height: calc(100vh - 70px);
+}
+
+main .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+
+    margin: auto;
+
+    width: 95vw;
+    max-width: 800px;
+    height: 100%;
+}
+
+main .cotainer .consult-box {
+    width: 50%;
+}
+
+main .container .consult-box form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+
+    width: 100%;
+}
+
+
+main .container .consult-box form .input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding: 0px 10px;
+
+    border: 1px solid var(--dark-border);
+    border-radius: 5px;
+    background-color: var(--light-secondary-background);
+}
+
+main .container .consult-box form .input .select {
+    padding: 10px;
+
+    width: 100%;
+
+    outline: transparent;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    font-size: 1em;
+}
+
+main .container .consult-box form .input .select option {
+    background: var(--light-secondary-background);
+}
+
+main .container .consult-box form button {
+    padding: 10px 20px;
+
+    outline: transparent;
+    border: var(--dark-border);
+    border-radius: 5px;
+    background-color: var(--global-color);
+    cursor: pointer;
+    
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--global-white);
+}
+
+main .container .result-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    padding: 20px;
+
+    width: 80%;
+    height: autos;
+
+    border: 1px solid var(--dark-border);
+    border-radius: 15px;
+    background-color: var(--light-secondary-background);
+
+}
+
+main .container .no-result-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    padding: 20px;
+
+    width: 80%;
+    height: 340px;
+
+    border: 1px solid var(--dark-border);
+    border-radius: 15px;
+    background-color: var(--light-secondary-background);
+
+}
+
+main .container .result-box .header-result {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+
+    padding-bottom: 1em;
+    
+    width: 100%;
+    height: 40%;
+
+    border-bottom: 1px solid var(--dark-border);
+}
+
+main .container .result-box .header-result img {
+    width: 70px;
+    height: 70px;
+
+    border-radius: 15px;
+}
+
+main .container .result-box .header-result .cattle-code {
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+main .container .result-box .content-result {
+    padding-bottom: 1em;
+
+    width: 100%;
+
+    border-bottom: 1px solid var(--dark-border);
+}
+
+main .container .result-box .content-result ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+
+    width: 100%;
+    list-style: none;
+}
+
+main .container .result-box .content-result ul li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .container .result-box .content-result ul li div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.2em;
+
+    font-size: 0.9em;
+}
+
+main .container .result-box .content-result ul li div span {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+main .container .result-box .cattle-control {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+main .container .result-box .cattle-control a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    padding: 8px 20px;
+
+    outline: transparent;
+    border: var(--dark-border);
+    border-radius: 5px;
+    background-color: var(--global-color);
+    text-decoration: none;    
+    
+    font-size: 1em;
+    font-weight: 400;
+    color: var(--global-white);
+}
+
+@media (max-width: 600px) {
+    main .container {
+        flex-direction: column;
+        gap: 1.5em;
+    }
+
+    main .container .consult-box {
+        width: 100%;
+
+    }
+
+    main .container .result-box {
+        width: 100%;
+    }
+   
+}

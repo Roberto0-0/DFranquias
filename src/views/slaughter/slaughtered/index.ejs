@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/dayjs.min.js"></script>
+    <link rel="stylesheet" href="/css/slaughter/slaughtered/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColors/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/assets/logo.png" alt="">
+                <h2>DFranquias</h2>
+            </a>
+            <div class="nav-area">
+                <div class="change-color" id="moon">
+                    <i style="display: none;" class="ph ph-moon"></i>
+                </div>
+                <nav class="nav">
+                    <ul>
+                      <li>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/">back</a>
+                      </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="menu"><i class="ph-bold ph-list"></i></div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <h2 class="slaughter-title"><i class="ph-light ph-smiley-x-eyes"></i> Slaughtered</h2>
+            <ul>
+                <% if(data) { %>
+                    <% data.forEach((cattle) => { %>
+                        <li>
+                            <div class="firstContainer">
+                                <img src="/assets/slaughter-cattle.png" alt="">
+                                <span class="cattle-code"><%= cattle.code %></span>
+                            </div>
+                            <div class="secondContainer">
+                                <ul class="cattle-info-manu">
+                                    <div class="right-line"><span><%= cattle.amount_milk %></span>milk</div>
+                                    <div><span><%= cattle.amount_food %></span>food</div>
+                                    <div class="right-line"><span><%= cattle.weight %></span>weight</div>
+                                    <div><span class="date"><%= cattle.birth %></span>years old</div>
+                                </ul>
+                            </div>
+                        </li>
+                    <% }) %>
+                <% } %>
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>
+                &copy; 2023 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+            </p>
+        </div>
+    </footer>
+    <script src="/js/menu/main.js"></script>
+    <script src="/js/cattleAgeCheck/main.js"></script>
+</body>
+</html>

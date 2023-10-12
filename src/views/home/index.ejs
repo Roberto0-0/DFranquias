@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/home/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColors/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/assets/logo.png" alt="">
+                <h2>DFranquias</h2>
+            </a>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <% if(data) { %>
+                <div class="contentContainer">
+                    <h2 class="info-title"><i class="ph-light ph-info"></i> Livestock information</h2>
+                    <ul>
+                        <li>
+                            <a href="">
+                                <div class="illustration">
+                                    <p>Milk</p>
+                                    <i class="ph ph-beer-bottle"></i>
+                                </div>
+                                <div class="info"><span><%= data.milkPerWeek %></span>L</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="illustration">
+                                    <p>Portion</p>
+                                    <i class="ph ph-bowl-food"></i>
+                                </div>
+                                <div class="info"><span><%= data.rationRequiredPerWeek %></span>Kg</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="illustration">
+                                    <p>Cattle</p>
+                                    <i class="ph ph-horse"></i>
+                                </div>
+                                <div class="info"><span><%= data.specificLivestock %></span></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            <% } %>
+            <div class="navigationContainer">
+                <h2 class="info-title"><i class="ph-light ph-sliders"></i> Livestock control</h2>
+                <nav>
+                    <a href="/slaughtered">
+                        <div class="subDiv">
+                            <i class="ph ph-smiley-x-eyes"></i>
+                            <p>Slaughtered cattle</p>
+                        </div>
+                        <i class="ph ph-caret-right"></i>
+                    </a>
+                    <a href="/cattle/search">
+                        <div class="subDiv">
+                            <i class="ph ph-file-search"></i>
+                            <p>Consult livestock</p>
+                        </div>
+                        <i class="ph ph-caret-right"></i>
+                    </a>
+                    <a href="../cattle/slaughter/index.html">
+                        <div class="subDiv">
+                            <i class="ph ph-knife"></i>
+                            <p>Slaughter cattle</p>
+                        </div>
+                        <i class="ph ph-caret-right"></i>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>
+                &copy; 2023 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

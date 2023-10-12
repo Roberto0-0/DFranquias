@@ -13,9 +13,7 @@ export class HomeController {
                 message: homeInformationResponse.message
             }) }
 
-            return res.status(200).json({
-                statusCode: 200,
-                success: true,
+            return res.render("home/index.ejs", {
                 data: homeInformationResponse
             })
         } catch (error) {

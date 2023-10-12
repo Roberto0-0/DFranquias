@@ -1,25 +1,25 @@
 import { CattleAgeCheck } from "../../config/cattleAgeCheck";
 import { SlaughterCheckSchema } from "../../schemas/SlaughterSchema";
-import { CattleGetById } from "../Cattle/getById";
+import { CattleGetByCode } from "../Cattle/getByCode";
 
 var errorStorage: string[] = []
 
 export class SlaughterCheck {
-    async execute(id: number) {
-        const cattleGetByIdService = new CattleGetById()
-        const cattleGetByIdResponse = await cattleGetByIdService.execute(Number(id))
+    async execute(code: string) {
+        const cattleGetByCodeService = new CattleGetByCode()
+        const cattleGetByCodeResponse = await cattleGetByCodeService.execute(code)
 
-        if(cattleGetByIdResponse instanceof Error) { return new Error(cattleGetByIdResponse.message) }
+        if(cattleGetByCodeResponse instanceof Error) { return new Error(cattleGetByCodeResponse.message) }
 
-        const cattleAge = CattleAgeCheck(cattleGetByIdResponse.birth)
+        const cattleAge = CattleAgeCheck(cattleGetByCodeResponse.birth)
 
-        const amountMilkPerWeek = cattleGetByIdResponse.amount_milk
-        const amountFoodPerDay = cattleGetByIdResponse.amount_food / 7
+        const amountMilkPerWeek = cattleGetByCodeResponse.amount_milk
+        const amountFoodPerDay = cattleGetByCodeResponse.amount_food / 7
 
-        const cattleArroba = cattleGetByIdResponse.weight / 30
+        const cattleArroba = cattleGetByCodeResponse.weight / 30
 
         const slaughterCheckSchemaResponse = SlaughterCheckSchema.safeParse({
-            alive: cattleGetByIdResponse.alive,
+            alive: cattleGetByCodeResponse.alive,
             age: cattleAge,
             amount_milk: amountMilkPerWeek,
             amount_food: amountFoodPerDay,
@@ -36,6 +36,9 @@ export class SlaughterCheck {
             }
         }
 
-        return
+        return {
+            success: true,
+            data: cattleGetByCodeResponse.code
+        }
     }
 }

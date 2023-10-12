@@ -1,0 +1,19 @@
+:root {
+    --global-color: #147CB7;
+    --global-hover-color: #178bcf;
+    --global-white: #fff;
+    --global-black: #000;
+
+    --light-header: #1e252e;
+    --light-footer: #1e252e;
+    --light-primary-background: #fff;
+    --light-secondary-background: #F6F8FA;
+    --light-text: #413f3f;
+    --light-border: #30363D;
+    
+    --dark-header-footer: #161B22;
+    --dark-primary-background: #010409;
+    --dark-secondary-background: #0D1117;
+    --dark-text: #CAD1D9;
+    --dark-border: #D0D7DE;
+}
