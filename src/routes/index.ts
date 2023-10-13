@@ -18,9 +18,11 @@ export class AppRoutes {
 
     cattle() {
         this.router.post("/cattle/register", new CattleController().create)
+        this.router.get("/cattle/register", new CattleController().createIndex)
         // this.router.get("/cattle/:id", new CattleController().getById)
-        this.router.put("/cattle/update/:id", new CattleController().update)
-        this.router.delete("/cattle/delete/:id", new CattleController().delete)
+        this.router.post("/cattle/update/:id", new CattleController().update)
+        this.router.get("/cattle/update/:id", new CattleController().updateIndex)
+        this.router.get("/cattle/delete/:id", new CattleController().delete)
         this.router.get("/cattle/search", new CattleController().getbyCodeIndex)
         this.router.post("/cattle/search", new CattleController().getbyCode)
     }

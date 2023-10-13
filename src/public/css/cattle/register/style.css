@@ -1,0 +1,187 @@
+main {
+    flex: 1;
+
+    margin: 20px auto;
+
+    width: 100%;
+    height: calc(100vh - 70px);
+}
+
+main .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+
+    margin: auto;
+
+    width: 95vw;
+    max-width: 500px;
+    height: 100%;
+}
+
+main .container .register-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+
+    margin-bottom: 1em;
+}
+
+main .container .register-title h2 {
+    font-weight: 300;
+    font-size: 1.5em;
+}
+
+main .container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+
+    width: 100%;
+}
+
+main .container form .inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+
+    width: 100%;
+}
+
+main .container form .inputContainer .firstSubInputContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+
+    width: 100%;
+}
+
+main .container form .inputContainer .secondSubInputContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+
+    width: 100%;
+}
+
+main .container form .inputContainer .thirdSubInputContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+
+    width: 100%;
+}
+
+main .container form .input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+
+    width: 100%;
+}
+
+main .container form .input label {
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+main .container form .input input {
+    padding: 10px;
+
+    width: 100%;
+    height: 40px;
+
+    border: 1px solid var(--dark-border);
+    border-radius: 5px;
+    background-color: var(--light-secondary-background);
+
+    font-size: 1em;
+    color: var(--light-text);
+}
+
+main .container form .input input:focus {
+    outline-color: var(--global-color);
+}
+
+main .container form .input .subInput {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    border: 1px solid var(--dark-border);
+    border-radius: 5px;
+    background-color: var(--light-secondary-background);
+}
+
+main .container form .input .subInput input {
+    padding: 10px;
+
+    width: 90%;
+
+    outline: transparent;
+    border: none;
+    background: none;
+
+    font-size: 1em;
+}
+
+main .container form .input .subInput i {
+    cursor: pointer;
+    
+    font-size: 1.2em;
+}
+
+main .container form button {
+    width: 100%;
+    height: 40px;
+
+    outline: transparent;
+    border: var(--dark-border);
+    border-radius: 5px;
+    background-color: var(--global-color);
+    cursor: pointer;
+    
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--global-white);
+}
+
+main .container form button:hover {
+    background: var(--global-hover-color);
+}
+
+main .container form .input .error_message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3em;
+    
+    width: 100%;
+}
+
+@media(max-width: 600px) {
+    main .container form .inputContainer {
+        flex-direction: column;
+    }
+
+    main .container form .inputContainer .firstSubInputContainer {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    main .container form .inputContainer .secondSubInputContainer {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    main .container form .inputContainer .thirdSubInputContainer {
+        flex-direction: column;
+        width: 100%;
+    }
+}

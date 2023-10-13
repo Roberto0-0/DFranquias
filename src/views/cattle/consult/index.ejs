@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/header/style.css">
     <link rel="stylesheet" href="/css/footer/style.css">
     <link rel="stylesheet" href="/css/rootColors/style.css">
+    <link rel="stylesheet" href="/css/notification/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -27,7 +28,7 @@
                     <ul>
                         <li>
                             <i class="ph-fill ph-file-plus"></i>
-                          <a href="">register</a>
+                          <a href="/cattle/register">register</a>
                         </li>
                       <li>
                         <i class="ph-fill ph-key-return"></i>
@@ -40,6 +41,9 @@
         </div>
     </header>
     <main>
+        <% if(success_message.length > 0) { %>
+            <div class="notification"><span class="message"><%= success_message %></span></div>
+        <% } %>
         <div class="container">
             <% if(data) { %>
                 <div class="consult-box">
@@ -87,9 +91,8 @@
                         </ul>
                     </div>
                     <div class="cattle-control">
-                        <a href="../edit/index.html">Edit</a>
-                        <a href="">Delete</a>
-                        <a href="" class="slaughter-button">slaughter</a>
+                        <a href="/cattle/update/<%= data.id %>">Edit</a>
+                        <a href="/cattle/delete/<%= data.id %>">Delete</a>
                     </div>
                 </div>
             <% } else { %>
@@ -121,5 +124,6 @@
     </footer>
     <script src="/js/menu/main.js"></script>
     <script src="/js/cattleAgeCheckSingle/main.js"></script>
+    <script src="/js/notification/main.js"></script>
 </body>
 </html>

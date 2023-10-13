@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/cattle/register/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColors/style.css">
+    <link rel="stylesheet" href="/css/notification/style.css">
+    <link rel="stylesheet" href="/css/errorMessage/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/assets/logo.png" alt="">
+                <h2>DFranquias</h2>
+            </a>
+            <div class="nav-area">
+                <div class="change-color" id="moon">
+                    <i style="display: none;" class="ph ph-moon"></i>
+                </div>
+                <nav class="nav">
+                    <ul>
+                      <li>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/cattle/search">back</a>
+                      </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="menu"><i class="ph-bold ph-list"></i></div>
+        </div>
+    </header>
+    <main>
+        <% if(success_message.length > 0) { %>
+            <div class="notification"><span class="message"><%= success_message %></span></div>
+        <% } %>
+        <div class="container">
+            <div class="register-title">
+                <h2>Cattle register</h2>
+            </div>
+            <% if(error_message.length > 0) { %>
+                <form action="/cattle/register" method="POST">
+                    <div class="inputContainer">
+                        <div class="firstSubInputContainer">
+                            <div class="input">
+                                <label for="code">Code</label>
+                                <input type="text" name="code" autocomplete="off" required style="text-transform:uppercase">
+                                <% for(let i=0;i < error_message.length;i++) { %>
+                                    <% if(error_message[i] == "Code is required." || error_message[i] == "Invalid code." || error_message[i] == "Code already in use.") { %>
+                                        <div class="error_message">
+                                            <i class="ph-fill ph-warning"></i>
+                                            <span class="message"><%= error_message[i] %></span>
+                                        </div>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                            <div class="input">
+                                <label for="Milk">Milk</label>
+                                <input type="number" name="milk" autocomplete="off" required>
+                                <% for(let i=0;i < error_message.length;i++) { %>
+                                    <% if(error_message[i] == "Amount of milk is required.") { %>
+                                        <div class="error_message">
+                                            <i class="ph-fill ph-warning"></i>
+                                            <span class="message"><%= error_message[i] %></span>
+                                        </div>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="secondSubInputContainer">
+                            <div class="input">
+                                <label for="food">Food</label>
+                                <input type="number" name="food" autocomplete="off" placeholder="Kg" required>
+                                <% for(let i=0;i < error_message.length;i++) { %>
+                                    <% if(error_message[i] == "Amount of food is required.") { %>
+                                        <div class="error_message">
+                                            <i class="ph-fill ph-warning"></i>
+                                            <span class="message"><%= error_message[i] %></span>
+                                        </div>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                            <div class="input">
+                                <label for="weight">Weight</label>
+                                <input type="number" name="weight" autocomplete="off" placeholder="Kg" required>
+                                <% for(let i=0;i < error_message.length;i++) { %>
+                                    <% if(error_message[i] == "Weight is required." || error_message[i] == "Invalid weight.") { %>
+                                        <div class="error_message">
+                                            <i class="ph-fill ph-warning"></i>
+                                            <span class="message"><%= error_message[i] %></span>
+                                        </div>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="thirdSubInputContainer">
+                            <div class="input">
+                                <label for="birth">Birth</label>
+                                <input type="date" name="birth" id="birth" required>
+                                <% for(let i=0;i < error_message.length;i++) { %>
+                                    <% if(error_message[i] == "Date of birth is required." || error_message[i] == "That's not a date." || error_message[i] == "Too old." || error_message[i] == "Too young.") { %>
+                                        <div class="error_message">
+                                            <i class="ph-fill ph-warning"></i>
+                                            <span class="message"><%= error_message[i] %></span>
+                                        </div>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                    <button>register</button>
+                </form>             
+            <% } else { %>
+                <form action="/cattle/register" method="POST">
+                    <div class="inputContainer">
+                        <div class="firstSubInputContainer">
+                            <div class="input">
+                                <label for="code">Code</label>
+                                <input type="text" name="code" autocomplete="off" required style="text-transform:uppercase">
+                            </div>
+                            <div class="input">
+                                <label for="Milk">Milk</label>
+                                <input type="number" name="milk" autocomplete="off" required>
+                            </div>
+                        </div>
+                        <div class="secondSubInputContainer">
+                            <div class="input">
+                                <label for="food">Food</label>
+                                <input type="number" name="food" autocomplete="off" placeholder="Kg" required>
+                            </div>
+                            <div class="input">
+                                <label for="weight">Weight</label>
+                                <input type="number" name="weight" autocomplete="off" placeholder="Kg" required>
+                            </div>
+                        </div>
+                        <div class="thirdSubInputContainer">
+                            <div class="input">
+                                <label for="birth">Birth</label>
+                                <input type="date" name="birth" id="birth" required>
+                            </div>
+                        </div>
+                    </div>
+                    <button>register</button>
+                </form>   
+            <% } %>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>
+                &copy; 2023 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+            </p>
+        </div>
+    </footer>
+    <script src="/js/menu/main.js"></script>
+    <script src="/js/notification/main.js"></script>
+    <script src="/js/errorMessage/main.js"></script>
+</body>
+</html>

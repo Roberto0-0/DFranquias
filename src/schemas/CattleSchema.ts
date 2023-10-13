@@ -15,7 +15,7 @@ export const CattleCreateSchema = z.object({
     }).min(0, "Invalid weight."),
     birth: z.date({
         required_error: "Date of birth is required.",
-        invalid_type_error: "That's not a date!"
+        invalid_type_error: "That's not a date."
     })
     .min(new Date("2000-01-01"), { message: "Too old." })
     .max(new Date(), { message: "Too young." })

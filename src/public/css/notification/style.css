@@ -1,0 +1,49 @@
+main .notification {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.3em;
+    
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    
+    transform: translate(-50%, -50%);
+    
+    padding: 15px;
+    
+    width: 95vw;
+    max-width: 600px;
+    
+    animation: down 0.4s;
+    border-radius: 5px;
+    background: var(--global-color);
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    
+    
+    font-weight: 500;
+    font-size: 1em;
+    color: var(--global-white);
+
+    z-index: 10000;
+}
+
+@keyframes down {
+    from { top: 0px; }
+    to { top: 100px; }
+}
+
+@media(max-width: 600px) {
+    main .notification {
+        position: fixed;
+        top: 90vh;
+
+        transition: .2s;
+    }
+
+    @keyframes down {
+        from { top: 100vh; }
+        to { top: 90vh; }
+    }
+}

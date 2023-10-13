@@ -1,0 +1,19 @@
+.error_message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3em;
+    
+    width: 100%;
+}
+
+.error_message i {
+    font-size: 0.9em;
+    color: #b82020;
+}
+
+.error_message .message {
+    font-weight: 600;
+    font-size: 0.8em;
+    color: #b82020;
+}
