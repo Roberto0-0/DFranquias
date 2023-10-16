@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/slaughter/slaughterCheck/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColors/style.css">
+    <link rel="stylesheet" href="/css/notification/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/assets/logo.png" alt="">
+                <h2>DFranquias</h2>
+            </a>
+            <div class="nav-area">
+                <div class="change-color" id="moon">
+                    <i style="display: none;" class="ph ph-moon"></i>
+                </div>
+                <nav class="nav">
+                    <ul>
+                      <li>
+                        <i class="ph-fill ph-key-return"></i>
+                        <a href="/">back</a>
+                      </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="menu"><i class="ph-bold ph-list"></i></div>
+        </div>
+    </header>
+    <main>
+        <% if(success_message.length > 0) { %>
+            <div class="notification"><span class="message"><%= success_message %></span></div>
+        <% } %>
+        <div class="container">
+            <% if(error_message.length > 0) { %>
+                <div class="consult-box">
+                    <form action="/slaughterCheck" method="POST">
+                        <div class="input">
+                            <select name="code" id="code" class="select" required>
+                                <option selected disabled><%= error_message[1] %></option>
+                                <% if(codes.length > 0) { %>
+                                    <% for(let index=0; index < codes.length;index++) { %>
+                                        <option value="<%= codes[index] %>"><%= codes[index] %></option>
+                                    <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+                        <button>check</button>
+                    </form>
+                </div>
+                <div class="result-box">
+                    <div class="header-result">
+                        <img src="/assets/cattle.png" alt="">
+                        <span class="cattle-code"><%= error_message[1] %></span>
+                    </div>
+                    <div class="content-result">
+                        <ul>
+                            <li>
+                                <p>Age</p>
+                                <% for(var i=0;i < error_message[0].length;i++) { %>
+                                    <% if(error_message[0][i] == "The age limit is 4 years.") { %>
+                                        <div class="invalid"><i class="ph-fill ph-warning-circle"></i><span><%= error_message[0][i] %></span></div>
+                                    <% } %>
+                                <% } %>
+                            </li>
+                            <li>
+                                <p>Milk</p>
+                                <% for(var i=0;i < error_message[0].length;i++) { %>
+                                    <% if(error_message[0][i] == "Above 70 liters.") { %>
+                                         <div class="invalid"><i class="ph-fill ph-warning-circle"></i><span><%= error_message[0][i] %></span></div>
+                                    <% } %>
+                                <% } %>
+                            </li>
+                            <li>
+                                <p>Food</p>
+                                <% for(var i=0;i < error_message[0].length;i++) { %>
+                                    <% if(error_message[0][i] == "Under 50 kilos of food.") { %>
+                                        <div class="invalid"><i class="ph-fill ph-warning-circle"></i><span><%= error_message[0][i] %></span></div>
+                                    <% } %>
+                                <% } %>
+                            </li>
+                            <li>
+                                <p>Arrobas</p>
+                                <% for(var i=0;i < error_message[0].length;i++) { %>
+                                    <% if(error_message[0][i] == "Below 18 arrobas.") { %>
+                                        <div class="invalid"><i class="ph-fill ph-warning-circle"></i><span><%= error_message[0][i] %></span></div>
+                                    <% } %>
+                                <% } %>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="cattle-control">
+                        <% if(error_message[0] === "0") { %>
+                            <a href="/slaughter/<%= error_message[1] %>" class="valid-slaughter-button">slaughter</a>
+                        <% } else { %>
+                            <a class="invalid-slaughter-button">slaughter</a>
+                        <% } %>
+                    </div>
+                </div>    
+            <% } else { %>
+                <div class="consult-box">
+                    <form action="/slaughterCheck" method="POST">
+                        <div class="input">
+                            <select name="code" id="code" class="select" required>
+                                <option selected disabled>select</option>
+                                <% if(codes.length > 0) { %>
+                                    <% for(let index=0; index < codes.length;index++) { %>
+                                        <option value="<%= codes[index] %>"><%= codes[index] %></option>
+                                    <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+                        <button>check</button>
+                    </form>
+                </div>
+            <% } %>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>
+                &copy; 2023 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+            </p>
+        </div>
+    </footer>
+    <script src="/js/menu/main.js"></script>
+    <script src="/js/notification/main.js"></script>
+</body>
+</html>

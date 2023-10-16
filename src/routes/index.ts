@@ -1,7 +1,7 @@
 import express, { Request, Response, Router } from "express";
 import { CattleController } from "../controllers/cattleController";
 import { HomeController } from "../controllers/homeController";
-import { slaughterController } from "../controllers/slaughterController";
+import { SlaughterController } from "../controllers/slaughterController";
 
 export class AppRoutes {
     router: express.IRouter
@@ -28,8 +28,9 @@ export class AppRoutes {
     }
 
     slaughter() {
-        this.router.get("/slaughtered", new slaughterController().slaughtered)
-        this.router.put("/slaughter/:code", new slaughterController().slaughter)
-        this.router.put("/slaughter/check", new slaughterController().slaughterCheck)
+        this.router.get("/slaughtered", new SlaughterController().slaughtered)
+        this.router.post("/slaughter/:code", new SlaughterController().slaughter)
+        this.router.get("/slaughter/check", new SlaughterController().slaughterCheckIndex)
+        this.router.post("/slaughterCheck", new SlaughterController().slaughterCheck)
     }
 }

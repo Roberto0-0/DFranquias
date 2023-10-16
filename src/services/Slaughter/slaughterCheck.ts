@@ -6,6 +6,8 @@ var errorStorage: string[] = []
 
 export class SlaughterCheck {
     async execute(code: string) {
+        errorStorage = []
+
         const cattleGetByCodeService = new CattleGetByCode()
         const cattleGetByCodeResponse = await cattleGetByCodeService.execute(code)
 
