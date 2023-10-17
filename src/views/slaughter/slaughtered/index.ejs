@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/header/style.css">
     <link rel="stylesheet" href="/css/footer/style.css">
     <link rel="stylesheet" href="/css/rootColors/style.css">
+    <link rel="stylesheet" href="/css/notification/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -36,24 +37,29 @@
         </div>
     </header>
     <main>
+        <% if(success_message.length > 0) { %>
+            <div class="notification"><span class="message"><%= success_message %></span></div>
+        <% } %>
         <div class="container">
             <h2 class="slaughter-title"><i class="ph-light ph-smiley-x-eyes"></i> Slaughtered</h2>
             <ul>
                 <% if(data) { %>
                     <% data.forEach((cattle) => { %>
                         <li>
-                            <div class="firstContainer">
-                                <img src="/assets/slaughter-cattle.png" alt="">
-                                <span class="cattle-code"><%= cattle.code %></span>
-                            </div>
-                            <div class="secondContainer">
-                                <ul class="cattle-info-manu">
-                                    <div class="right-line"><span><%= cattle.amount_milk %></span>milk</div>
-                                    <div><span><%= cattle.amount_food %></span>food</div>
-                                    <div class="right-line"><span><%= cattle.weight %></span>weight</div>
-                                    <div><span class="date"><%= cattle.birth %></span>years old</div>
-                                </ul>
-                            </div>
+                            <a href="/slaughtered/settings/<%= cattle.id %>">
+                                <div class="firstContainer">
+                                    <img src="/assets/slaughter-cattle.png" alt="">
+                                    <span class="cattle-code"><%= cattle.code %></span>
+                                </div>
+                                <div class="secondContainer">
+                                    <ul class="cattle-info-manu">
+                                        <div class="right-line"><span><%= cattle.amount_milk %></span>milk</div>
+                                        <div><span><%= cattle.amount_food %></span>food</div>
+                                        <div class="right-line"><span><%= cattle.weight %></span>weight</div>
+                                        <div><span class="date"><%= cattle.birth %></span>years old</div>
+                                    </ul>
+                                </div>
+                            </a>
                         </li>
                     <% }) %>
                 <% } %>
@@ -69,5 +75,6 @@
     </footer>
     <script src="/js/menu/main.js"></script>
     <script src="/js/cattleAgeCheck/main.js"></script>
+    <script src="/js/notification/main.js"></script>
 </body>
 </html>

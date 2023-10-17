@@ -62,46 +62,69 @@
                         <span class="cattle-code"><%= error_message[1] %></span>
                     </div>
                     <div class="content-result">
-                        <ul>
-                            <li>
-                                <p>Age</p>
-                                <% for(var i=0;i < error_message[0].length;i++) { %>
-                                    <% if(error_message[0][i] == "The age limit is 4 years.") { %>
-                                        <div class="invalid"><i class="ph-fill ph-warning-circle"></i><span><%= error_message[0][i] %></span></div>
+                        <% if(error_message[0] !== "0") { %>
+                            <ul>
+                                <li>
+                                    <p>Age</p>
+                                    <% for(var i=0;i < error_message[0].length;i++) { %>
+                                        <% if(error_message[0][i] == "The age limit is 4 years.") { %>
+                                            <div class="invalid"><i class="ph-fill ph-warning-circle"></i><span><%= error_message[0][i] %></span></div>
+                                        <% } %>
                                     <% } %>
-                                <% } %>
-                            </li>
-                            <li>
-                                <p>Milk</p>
-                                <% for(var i=0;i < error_message[0].length;i++) { %>
-                                    <% if(error_message[0][i] == "Above 70 liters.") { %>
-                                         <div class="invalid"><i class="ph-fill ph-warning-circle"></i><span><%= error_message[0][i] %></span></div>
+                                </li>
+                                <li>
+                                    <p>Milk</p>
+                                    <% for(var i=0;i < error_message[0].length;i++) { %>
+                                        <% if(error_message[0][i] == "Above 70 liters.") { %>
+                                             <div class="invalid"><i class="ph-fill ph-warning-circle"></i><span><%= error_message[0][i] %></span></div>
+                                        <% } %>
                                     <% } %>
-                                <% } %>
-                            </li>
-                            <li>
-                                <p>Food</p>
-                                <% for(var i=0;i < error_message[0].length;i++) { %>
-                                    <% if(error_message[0][i] == "Under 50 kilos of food.") { %>
-                                        <div class="invalid"><i class="ph-fill ph-warning-circle"></i><span><%= error_message[0][i] %></span></div>
+                                </li>
+                                <li>
+                                    <p>Food</p>
+                                    <% for(var i=0;i < error_message[0].length;i++) { %>
+                                        <% if(error_message[0][i] == "Under 50 kilos of food.") { %>
+                                            <div class="invalid"><i class="ph-fill ph-warning-circle"></i><span><%= error_message[0][i] %></span></div>
+                                        <% } %>
                                     <% } %>
-                                <% } %>
-                            </li>
-                            <li>
-                                <p>Arrobas</p>
-                                <% for(var i=0;i < error_message[0].length;i++) { %>
-                                    <% if(error_message[0][i] == "Below 18 arrobas.") { %>
-                                        <div class="invalid"><i class="ph-fill ph-warning-circle"></i><span><%= error_message[0][i] %></span></div>
+                                </li>
+                                <li>
+                                    <p>Arrobas</p>
+                                    <% for(var i=0;i < error_message[0].length;i++) { %>
+                                        <% if(error_message[0][i] == "Below 18 arrobas.") { %>
+                                            <div class="invalid"><i class="ph-fill ph-warning-circle"></i><span><%= error_message[0][i] %></span></div>
+                                        <% } %>
                                     <% } %>
-                                <% } %>
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
+                        <% } else { %>
+                            <ul>
+                                <li>
+                                    <p>Age</p>
+                                    <div class="valid"><i class="ph-fill ph-check-circle"></i><span>valid</span></div>
+                                </li>
+                                <li>
+                                    <p>Milk</p>
+                                    <div class="valid"><i class="ph-fill ph-check-circle"></i><span>valid</span></div>
+                                </li>
+                                <li>
+                                    <p>Food</p>
+                                    <div class="valid"><i class="ph-fill ph-check-circle"></i><span>valid</span></div>
+                                </li>
+                                <li>
+                                    <p>Arrobas</p>
+                                    <div class="valid"><i class="ph-fill ph-check-circle"></i><span>valid</span></div>
+                                </li>
+                            </ul>
+                        <% } %>
                     </div>
                     <div class="cattle-control">
                         <% if(error_message[0] === "0") { %>
-                            <a href="/slaughter/<%= error_message[1] %>" class="valid-slaughter-button">slaughter</a>
+                            <form action="/slaughter/<%= error_message[1] %>" method="POST">
+                                <button class="valid-slaughter-button" type="submit">slaughter</button>
+                            </form>
                         <% } else { %>
-                            <a class="invalid-slaughter-button">slaughter</a>
+                            <button class="invalid-slaughter-button" type="submit">slaughter</button>
                         <% } %>
                     </div>
                 </div>    

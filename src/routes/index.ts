@@ -32,5 +32,9 @@ export class AppRoutes {
         this.router.post("/slaughter/:code", new SlaughterController().slaughter)
         this.router.get("/slaughter/check", new SlaughterController().slaughterCheckIndex)
         this.router.post("/slaughterCheck", new SlaughterController().slaughterCheck)
+        this.router.get("/slaughtered/settings/:id", new SlaughterController().slaughteredSettingsIndex)
+        this.router.get("/slaughtered/settings/update/:id", new SlaughterController().updateIndex)
+        this.router.post("/slaughtered/settings/update/:id", new SlaughterController().update)
+        this.router.get("/slaughtered/settings/delete/:id", new SlaughterController().delete)
     }
 }

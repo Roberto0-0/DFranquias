@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/dayjs.min.js"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/slaughter/slaughtered/settings/update/style.css">
+    <link rel="stylesheet" href="/css/header/style.css">
+    <link rel="stylesheet" href="/css/footer/style.css">
+    <link rel="stylesheet" href="/css/rootColors/style.css">
+    <link rel="stylesheet" href="/css/notification/style.css">
+    <link rel="stylesheet" href="/css/errorMessage/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/assets/logo.png" alt="">
+                <h2>DFranquias</h2>
+            </a>
+            <div class="nav-area">
+                <div class="change-color" id="moon">
+                    <i style="display: none;" class="ph ph-moon"></i>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <% if(data) { %>
+                            <li>
+                                <i class="ph-fill ph-key-return"></i>
+                                <a href="/slaughtered/settings/<%= data.id %>">back</a>
+                            </li>
+                        <% } %>
+                    </ul>
+                </nav>
+            </div>
+            <div class="menu"><i class="ph-bold ph-list"></i></div>
+        </div>
+    </header>
+    <main>
+        <% if(success_message.length > 0) { %>
+            <div class="notification"><span class="message"><%= success_message %></span></div>
+        <% } %>
+        <div class="container">
+            <div class="register-title">
+                <h2>Cattle register</h2>
+            </div>
+            <% if(data) { %>
+                <% if(error_message.length > 0) { %>
+                    <form action="/slaughtered/settings/update/<%= data.id %>" method="POST">
+                        <div class="inputContainer">
+                            <div class="firstSubInputContainer">
+                                <div class="input">
+                                    <label for="code">Code</label>
+                                    <input type="text" name="code" autocomplete="off" required style="text-transform:uppercase" value="<%= error_message[1].code %>" >
+                                    <% for(let i=0;i < error_message[0].length;i++) { %>
+                                        <% if(error_message[0][i] == "Code is required." || error_message[0][i] == "Invalid code." || error_message[0][i] == "Code already in use.") { %>
+                                            <div class="error_message">
+                                                <i class="ph-fill ph-warning"></i>
+                                                <span class="message"><%= error_message[0][i] %></span>
+                                            </div>
+                                        <% } %>
+                                    <% } %>
+                                </div>
+                                <div class="input">
+                                    <label for="Milk">Milk</label>
+                                    <input type="number" name="milk" autocomplete="off" required value="<%= error_message[1].milk %>">
+                                    <% for(let i=0;i < error_message[0].length;i++) { %>
+                                        <% if(error_message[0][i] == "Amount of milk is required.") { %>
+                                            <div class="error_message">
+                                                <i class="ph-fill ph-warning"></i>
+                                                <span class="message"><%= error_message[0][i] %></span>
+                                            </div>
+                                        <% } %>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div class="secondSubInputContainer">
+                                <div class="input">
+                                    <label for="food">Food</label>
+                                    <input type="number" name="food" autocomplete="off" placeholder="Kg" required value="<%= error_message[1].food%>">
+                                    <% for(let i=0;i < error_message[0].length;i++) { %>
+                                        <% if(error_message[0][i] == "Amount of food is required.") { %>
+                                            <div class="error_message">
+                                                <i class="ph-fill ph-warning"></i>
+                                                <span class="message"><%= error_message[0][i] %></span>
+                                            </div>
+                                        <% } %>
+                                    <% } %>
+                                </div>
+                                <div class="input">
+                                    <label for="weight">Weight</label>
+                                    <input type="number" name="weight" autocomplete="off" placeholder="Kg" required value="<%= error_message[1].weight %>">
+                                    <% for(let i=0;i < error_message[0].length;i++) { %>
+                                        <% if(error_message[0][i] == "Weight is required." || error_message[0][i] == "Invalid weight.") { %>
+                                            <div class="error_message">
+                                                <i class="ph-fill ph-warning"></i>
+                                                <span class="message"><%= error_message[0][i] %></span>
+                                            </div>
+                                        <% } %>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div class="thirdSubInputContainer">
+                                <div class="input">
+                                    <label for="birth">Birth</label>
+                                    <input type="date" name="birth" id="birth" required value="<%= error_message[1].birth %>">
+                                    <% for(let i=0;i < error_message[0].length;i++) { %>
+                                        <% if(error_message[0][i] == "Date of birth is required." || error_message[0][i] == "That's not a date." || error_message[0][i] == "Too old." || error_message[0][i] == "Too young.") { %>
+                                            <div class="error_message">
+                                                <i class="ph-fill ph-warning"></i>
+                                                <span class="message"><%= error_message[0][i] %></span>
+                                            </div>
+                                        <% } %>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <button>update</button>
+                    </form>             
+                <% } else { %>
+                    <form action="/slaughtered/settings/update/<%= data.id %>" method="POST">
+                        <div class="inputContainer">
+                            <div class="firstSubInputContainer">
+                                <div class="input">
+                                    <label for="code">Code</label>
+                                    <input type="text" name="code" autocomplete="off" required style="text-transform:uppercase" value="<%= data.code %>">
+                                </div>
+                                <div class="input">
+                                    <label for="Milk">Milk</label>
+                                    <input type="number" name="milk" autocomplete="off" required value="<%= data.amount_milk %>">
+                                </div>
+                            </div>
+                            <div class="secondSubInputContainer">
+                                <div class="input">
+                                    <label for="food">Food</label>
+                                    <input type="number" name="food" autocomplete="off" placeholder="Kg" required value="<%= data.amount_food %>">
+                                </div>
+                                <div class="input">
+                                    <label for="weight">Weight</label>
+                                    <input type="number" name="weight" autocomplete="off" placeholder="Kg" required value="<%= data.weight %>">
+                                </div>
+                            </div>
+                            <div class="thirdSubInputContainer">
+                                <div class="input">
+                                    <label for="birth">Birth</label>
+                                    <input type="date" name="birth" id="birth" class="date" required value="<%= data.birth %>">
+                                </div>
+                            </div>
+                        </div>
+                        <button>update</button>
+                    </form>   
+                <% } %>
+            <% } %>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>
+                &copy; 2023 <a href="https://pt.wikipedia.org/wiki/Direito_autoral">Copyright</a>™ All rights reserved.
+            </p>
+        </div>
+    </footer>
+    <script src="/js/menu/main.js"></script>
+    <script src="/js/notification/main.js"></script>
+    <script src="/js/errorMessage/main.js"></script>
+    <script src="/js/dateConvert/main.js"></script>
+</body>
+</html>
